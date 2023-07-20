@@ -1,0 +1,42 @@
+{%extends "index.html"%}
+{% load static %}
+{%block content%}
+{% load hitcount_tags %}
+
+<div  class="container" >  
+  <h1>{{mabani.name}}  </h1>
+  <br>
+  
+  <P>نوع العقار : {{mabani.estate_type}}</p>
+  <P>المكان: {{mabani.city}}</p>
+  <P>وصف العقار  : {{mabani.Description}}</p>
+  <p ><i class='fas fa-eye'></i> {% get_hit_count for mabani %}</p>
+    <br><br><br>
+
+    <div  class="slider-container" >
+        <div id="slide-number" class="slide-number"> </div> 
+        
+        <img decoding="async" src="{{mabani.image_one.url}}" style="width: 400px;height: 250px;">
+        <img decoding="async"  src="{{mabani.image_tow.url}}" style="width: 400px;height: 250px;">
+        <img decoding="async" src="{{mabani.image_three.url}}"style="width: 400px;height: 250px;">
+        <img decoding="async" src="{{mabani.image_fore.url}}"style="width: 400px;height: 250px;">
+          
+          
+        </div>
+        
+        
+   <div class="slider-controls">
+    <span id="prev" class="prev">Previous</span>
+    <span id="indicators" class="indicators"></span>
+    <span id="next" class="next">Next</span>
+  </div>
+  <script src="{% static 'main.js'%}"></script>
+  <br>
+  <br>
+  <p> </p>
+  <P>الرجوع الى <a href="/estate">العقارات </A> </P>
+   
+</div>
+
+
+{%endblock %}

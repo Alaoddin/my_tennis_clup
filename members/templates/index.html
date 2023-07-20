@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% bootstrap_messages %}
+
+  {% load static %}
+  <head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="alaoddin" content="عقارات آجار رهن بيع شراء سيارات اثاث سوريا اسواق سوريا">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+
+  </head> 
+<body dir="rtl" class="holl" lang="ar">
+{% include 'nav.html' %}
+{%block content%}
+
+<div class='main'>  
+<h1 class='texxt'> عنا الشاري مبسوط و البايع مرتاح</h1>
+<img  src="{% static 'images.jpg' %}" style=" width="850px" height="850px"  ">
+</div>
+
+{%endblock content%}
+      
+
+
+
+
+
+
+
+
+
+  
+  
+{% include 'footer.html'%}   
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+{%extends "index.html"%}
+{% load static %}
+
+
+{%block content%}
+
+<div  class="container" >  
+    <h1> تفاصيل السيارة </h1>
+    <br>
+    
+    <P>نوع السيارة : {{car_de.car_type}}</p>
+    <P>المكان: {{car_de.city}}</p>
+    <P>وصف السيارة  : {{car_de.Description}}</p>
+      <br><br><br>
+
+      <div  class="slider-container" >
+          <div id="slide-number" class="slide-number"> </div> 
+          
+          <img decoding="async" src="{{car_de.image_one.url}}" style="width: 400px;height: 250px;">
+          <img decoding="async"  src="{{car_de.image_tow.url}}" style="width: 400px;height: 250px;">
+          <img decoding="async" src="{{car_de.image_three.url}}"style="width: 400px;height: 250px;">
+          <img decoding="async" src="{{car_de.image_fore.url}}"style="width: 400px;height: 250px;">
+            
+            
+          </div>
+          
+          
+     <div class="slider-controls">
+      <span id="prev" class="prev">Previous</span>
+      <span id="indicators" class="indicators"></span>
+      <span id="next" class="next">Next</span>
+    </div>
+    <br>
+    <br>
+    
+    <P>الرجوع الى <a href="/cars" class="alink">  <span class="link"> السيارات </span></A> </P>
+    <script src="{% static 'main.js'%}"></script>
+    <br>
+  <br>
+  </div>
+
+
+
+
+{%endblock %}

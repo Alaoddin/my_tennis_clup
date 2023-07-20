@@ -1,0 +1,33 @@
+
+* {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+.fas  {
+    color:rgb(147, 8, 8);
+    }
+.fa {
+  color:rgb(147, 8, 8);
+}
+.iconmap {
+  background-color:rgb(58, 14, 26);
+  margin: -4px;
+  padding: 15px;
+  border-radius: 33px;
+  color:#fff;
+ 
+}
+
+.row {
+
+  position: relative;
+}
+
+.esicon {
+  position: absolute;
+  z-index: 2;
+  
+}

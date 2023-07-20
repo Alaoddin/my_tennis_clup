@@ -1,0 +1,46 @@
+{%extends "index.html"%}
+{%load static%}
+{%block content%}
+
+<div  class="container" >  
+  <h1>دراجات نارية ديرالزور </h1>
+  <br>
+  
+  <P>نوع الدراجة : {{motor_de.car_type}}</p>
+  <P>المكان: {{motor_de.city}}</p>
+  <P>وصف مختصر عنها   : {{motor_de.Description}}</p>
+  <P>رقم جوال المالك  : {{motor_de.phone_owner}}</p>
+    <br><br><br>
+
+    <div  class="slider-container" >
+        <div id="slide-number" class="slide-number"> </div> 
+        
+        <img decoding="async" src="{{motor_de.image_one.url}}" style="width: 400px;height: 250px;">
+        <img decoding="async"  src="{{motor_de.image_tow.url}}" style="width: 400px;height: 250px;">
+        <img decoding="async" src="{{motor_de.image_three.url}}"style="width: 400px;height: 250px;">
+        <img decoding="async" src="{{motor_de.image_fore.url}}"style="width: 400px;height: 250px;">
+          
+          
+        </div>
+        
+        
+   <div class="slider-controls">
+    <span id="prev" class="prev">السابق </span>
+    <span id="indicators" class="indicators"></span>
+    <span id="next" class="next">التالي</span>
+  </div>
+  <script src="{% static 'main.js'%}"></script>
+  <br>
+  
+
+  <br>
+  <br>
+  <P>الرجوع الى <a href="/motor"> الدراجات</a> </P>
+</div>
+
+
+
+{%endblock %}
+
+
+

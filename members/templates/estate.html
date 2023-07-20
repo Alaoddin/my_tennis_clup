@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load crispy_forms_tags %}
+{%block content%}
+
+
+<div class="container">
+
+  <sidbar>
+  <h6 class='alaoddin'>عقارات محافظة دير الزور</h6>
+  
+  
+
+  <form method="GET"  >
+    {% csrf_token %}
+    <div class='row'>
+              <div class='form-group col-3'>
+                {{ myfilter.form.city|as_crispy_field }}
+              </div>
+              <div class='form-group col-3'>
+                {{ myfilter.form.estate_type|as_crispy_field }}
+              </div>
+              <div class='form-group col-3'>
+                {{ myfilter.form.name|as_crispy_field }}
+              </div>
+              <div class='form-group col-3'>
+                {{ myfilter.form.adress|as_crispy_field }}
+              </div>
+    
+        <input type='submit' value='بحث' class="btn btn-light btn-lg btn-block sm" >
+    </div>
+  </form>
+  <hr>
+  <div class="row">
+    {% for x in estates %}
+      <div class="col-12 col-md-4 mb-4">
+        
+        <div class='esicon'> 
+                <span> 
+                  <i class='fas fa-map-marker-alt' style='font-size:24px'></i> 
+                <span class="iconmap"> {{x.city}}</span>
+                  </span>    
+          </div>  
+        <div class="card">
+       
+              <img src="{{x.image_one.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title"> نوع العقار :  {{x.estate_type}} </h5>
+                <p class="card-text"> وصف مختصر للعقار : {{x.Description}}</p>
+                <p class="card-text">: السعر{{x.prise}} ,</p>
+                <a href="/mabani/{{x.id}}" class="btn btn-primary">المزيد من التفاصيل</a>
+              </div>
+            </div>
+      </div>
+      
+    
+
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+

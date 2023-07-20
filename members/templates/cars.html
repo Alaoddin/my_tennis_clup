@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{%block content%}
+{% load django_bootstrap5 %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+  <h6>سيارات محافظة دير الزور</h6>
+
+
+<form method="GET"  >
+  <div class='row'>
+      <div class='form-group col-6'>
+        {{ myfilter.form.city|as_crispy_field }}
+        {{ myfilter.form.price|as_crispy_field }}
+      </div>
+  
+
+      <div class='form-group col-6'>
+        {{ myfilter.form.car_type|as_crispy_field }}
+        {{ myfilter.form.car_year|as_crispy_field }}
+        <input type='submit' value='بحث' class="btn btn-light btn-lg btn-block sm" >
+      </div>
+  
+    
+  </div>
+</form>
+
+<br>
+  <div class="row">
+    {% for x in cars %}
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          
+          <img src="{{x.image_one.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">نوع السيارة :{{x.car_type}}</h5>
+            <p class="card-text">وصف مختصر عن السيارة :{{x.Description}}</p>
+            <p class="card-text">السعر: {{x.price}}</p>
+            <p class="card-text">سنة التصنيع :{{x.car_year}}</p>
+            <p class="card-text">الموقع:{{x.city}}</p>
+            <a href="/cars/car_details/{{x.id}}" class="btn btn-primary">المزيد من التفاصيل</a>
+          </div>
+        </div>
+      </div>
+      
+    
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

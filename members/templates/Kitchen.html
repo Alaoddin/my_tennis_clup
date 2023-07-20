@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{%block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+  <h6 >مطبخك من عنا </h6>
+  <form method="GET"  >
+    {% csrf_token %}
+    <div class='row'>
+              <div class='form-group col-6'>
+                {{ myfilter.form.name|as_crispy_field }}
+                {{ myfilter.form.city|as_crispy_field }}
+              </div>
+              <div class='form-group col-6'>
+                {{  myfilter.form.price|as_crispy_field  }}
+              </div>
+
+        <input type='submit' value='بحث' class="btn btn-light btn-lg btn-block sm" >
+    </div>
+  </form>
+
+ 
+  <br>
+  <div class="row">
+    {% for x in kitchen %}
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          
+          <img src="{{x.image_one.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+          {% comment %} <img src="{{x.image_tow.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;"> {% endcomment %}
+          <div class="card-body">
+            <h5 class="card-title"> نوع المنتج :{{x.name}}</h5>
+            <p class="card-text"> وصف مختصر عن المنتج :{{x.Description}} </p>
+            <p class="card-text">السعر{{x.price}} ,</p>
+            <p class="card-text">الموقع:{{x.city}}</p>
+            <a href="#" class="btn btn-primary">المزيد من التفاصيل</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

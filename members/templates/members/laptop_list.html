@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{%block content%}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+  <h5>حواسيب نارية محافظة دير الزور</h5>
+  <form method="GET"  >
+    <div class='row'>
+        <div class='form-group col-3'>
+          {{ filter.name|as_crispy_field }}
+          {{ filter.city|as_crispy_field }}
+        </div>
+        <div class='form-group col-3'>
+          {{ filter.screen|as_crispy_field }}
+          {{ filter.hard|as_crispy_field }}
+        </div>
+        <div class='form-group col-3'>
+          {{ filter.ram|as_crispy_field }}
+          {{ filter.cpu|as_crispy_field }}
+        </div>
+        <div class='form-group col-3'>
+          {{ filter.price|as_crispy_field }}
+        </div>
+        <input type='submit' value='بحث' class="btn btn-light btn-lg  sm" >
+    
+      
+    </div>
+  </form>
+  <div class="row">
+    {% for x in laptops %}
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          
+          <img src="{{x.image_one.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{x.name}} نوع العقار</h5>
+            <p class="card-text">{{x.Description}} وصف مختصر للعقار.</p>
+            <p class="card-text">السعر{{x.price}} ,</p>
+            <p class="card-text">الموقع:{{x.city}}</p>
+            <a href="/motor/motor_details/{{x.id}}" class="btn btn-primary">المزيد من التفاصيل</a>
+          </div>
+        </div>
+      </div>
+      
+    
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

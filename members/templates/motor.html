@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load django_bootstrap5%}
+{%block content%}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+  <h5>دراجات نارية محافظة دير الزور</h5>
+
+<!-- filter -->
+        
+  <form method="GET"  >
+    <div class='row'>
+        <div class='form-group col-6'>
+          {{ myfilter.form.city|as_crispy_field }}
+          {{ myfilter.form.price|as_crispy_field }}
+        </div>
+    
+  
+        <div class='form-group col-6'>
+          {{ myfilter.form.motor_type|as_crispy_field }}
+          {{ myfilter.form.year_made|as_crispy_field }}
+          <input type='submit' value='بحث' class="btn btn-light btn-lg btn-block sm" >
+        </div>
+    
+      
+    </div>
+  </form>
+<!-- end  filter -->
+
+  <br>
+  <div class="row">
+    {% for x in motor %}
+      <div class="col-12 col-md-4 mb-4">
+        <div class="card">
+          
+          <img src="{{x.image_one.url}}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">نوع الدراجة :{{x.motor_type}}</h5>
+            <p class="card-text"> وصف مختصر عننها :{{x.Description}}</p>
+            <p class="card-text">السعر{{x.price}} ,</p>
+            <p class="card-text">الموقع:{{x.city}}</p>
+            <a href="/motor/motor_details/{{x.id}}" class="btn btn-primary">المزيد من التفاصيل</a>
+          </div>
+        </div>
+      </div>
+      
+    
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
